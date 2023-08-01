@@ -1,0 +1,107 @@
+.info {
+    display: grid;
+    background-color: #F4F4F4;
+    padding: 60px 0;
+    & > h2 {
+        grid-area: a;
+        padding-left: 20px;
+        font-size: 42px;
+        font-weight: $fw;
+        color: #8D81AC;
+        justify-self: $cn;
+    }
+    &__flex {
+        grid-area: b;
+        padding-left: 50px;
+        @include price();
+        min-height: 550px;
+        &__item {
+            justify-content: space-between;
+            &__img { width: 110px; }
+            &__text {
+                width: 30vw;
+                padding-left: 20px;
+                & > h3 { font-size: 16px; color: #323232; }
+                & > p { font-size: 14px; color:#848E97; margin-top: 18px; }
+            }
+        }
+
+    }
+    & > .item__image {
+        grid-area: c;
+        justify-self: end;
+        align-self: end;
+        width: 520px;
+    }
+    grid-template-areas: 
+    'b a'
+    'b c'
+    'b c';
+
+    &__flex {
+        &__item {
+            @include flex-rw();
+        }
+    }
+}
+
+@media only screen and (max-width: 992px){
+    .info {
+        grid-template-areas:
+        'a'
+        'b'
+        'c';
+        &__flex {
+            justify-self: start;
+            padding-left: $bt;
+            &__item {
+                width: $wd;
+                flex-direction: row;
+                justify-content: none;
+                margin-top: $bt;
+                &__text {
+                    width: $wd2;
+                    padding: 0;
+                }
+                &__img > img { max-width: 96px; }
+            }
+        }
+
+        & > h2 {
+            width: $wd2;
+            text-align: $cn;
+            margin-bottom: 20px;
+            font-size: 29px;
+        }
+
+        & .item__image {
+            width: $wd;
+            margin-top: 50px;
+        }
+    }
+}
+
+@media only screen and (max-width: 481px){
+    .info {
+        &__flex {
+            padding: 0 10px;
+            margin: $margin;
+            &__item {
+                flex-direction: column;
+                align-items: $cn;
+                &__text {
+                    text-align: $cn;
+                    margin-top: $fz;
+                }
+                &__img { text-align: $cn; }
+            }
+        }
+        & > .item__image {
+            width: $wd;
+            height: 370px;
+            object-fit: cover;
+            object-position: left;
+        }
+        & > h2 { padding: 0; }
+    }
+}

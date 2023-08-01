@@ -1,0 +1,123 @@
+.block {
+    text-align: $cn;
+    background-color: #463048;
+    margin: $margin;
+    padding: 10px 10px 0 10px;
+
+    & > h1 {
+        font-size: 48px;
+        color: white;
+        margin: 100px auto 80px auto;
+        font-weight: $fw;
+    }
+
+    &__row {
+        display: grid;
+        grid-template-columns: repeat(4,1fr);
+        grid-gap: 20px;
+        margin: $margin;
+        width: 95vw;
+        max-width: 1150px;
+        
+        &__item:nth-child(3) {
+            @include price();
+            position: relative;
+            min-width: 220px;
+            bottom: 40px;
+            height: 560px;
+            background-color: #4e3450;
+
+            & > h1 { font-size: 82px; }
+            & > .block__name { background-color: #3c273e; }
+        }
+
+        &__item {
+            height: 457px;
+            @include price();
+            background-color: rgba(255, 255, 255, 0.1);
+            
+            & > h1 {
+                color: white;
+                font-size: 60px;
+                font-weight: $fw;
+            }
+            & >  p {
+                color: white;
+                font-size: 14px;
+            }
+            & > h1 > span { font-weight: 300; }
+        }
+    }
+    &__name {
+        text-align: $cn;
+        width: 100%;
+        font-size: $fz;
+        padding: 36px 60px;
+        color: white;
+        background-color: rgba(255, 255, 255, 0.149);
+    }
+}
+
+.line {
+    width: 60px;
+    height: 5px;
+    background-color: #8D81AC;
+}
+
+.text { color: white; }
+
+.purchase__button {
+    font-size: 15px;
+    padding: 11px 30px;
+    border-radius: 15px;
+    background-color: rgba(255, 255, 255, 0.2);
+    margin-bottom: $bt;
+    color: white;
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 992px){
+    .block {
+        &__row {
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(2,1fr);
+            max-width: 460px;
+
+            &__item {
+                justify-self: end;
+                width: 40vw;
+                max-width: 200px;
+            }
+
+            &__item:nth-child(3){ width: 45vw; max-width: 250px;}
+        }
+        & > h1 { font-size: 34px; margin: 50px auto 30px auto;}
+    }
+}
+
+@media only screen and (max-width: 481px){
+    .block {
+
+        & > h1 {
+            font-size: $fz;
+            margin: 5px auto 30px auto;
+        }
+
+        &__row {
+
+            grid-template-columns: 1fr;
+            padding-bottom: 10px;
+            width: 300px;
+            margin-right: auto;
+            &__item {
+                justify-self: $cn;
+                width: 257px;
+            }
+            &__item:nth-child(3){
+                width: 290px;
+                justify-self: $cn;
+                top: 5px;
+            }
+        }
+    }
+}
